@@ -6,5 +6,9 @@ openssl req -new -key docker.key -out docker.csr -subj "/C=UK/ST=Warrington/L=Bi
 openssl x509 -req -days 365 -in docker.csr -signkey docker.key -out docker.crt
 openssl pkcs12 -export -out docker.pfx -inkey docker.key -passout pass:podeRocksSocks -in docker.crt
 
+cd /usr/Pode/
+git checkout pode-listener
+git pull
+cp /usr/web-sockets.ps1 /usr/Pode/examples/web-sockets.ps1
 
-pwsh -c "cd /usr/Pode/examples/certs; ../web-sockets.ps1"
+pwsh -c "cd /usr/Pode/examples; ./web-sockets.ps1"
