@@ -16,12 +16,16 @@ cd /usr/Pode/
 git checkout $podebranch
 git pull
 cp /usr/web-sockets.ps1 /usr/Pode/examples/web-sockets.ps1
-
+cp /usr/web-sockets-stats.ps1 /usr/Pode/examples/web-sockets-stats.ps1
 
 if [ -z "$examplefile" ]
 then
 echo "No examplefile passed, defaulting to web-sockets.ps1"
 examplefile="web-sockets.ps1"
 fi
+
+# Log stats after server has settled
+atd
+echo "/usr/Pode/examples/linuxStatus.sh >> /usr/linuxStatus.txt" | at now
 
 pwsh -c "cd /usr/Pode/examples; ./$examplefile"

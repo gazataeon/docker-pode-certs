@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Pode Stats Page</title>
+    </head>
+    <body>
+        <b>HELLO THERE!</b>
+        $(foreach ($stat in (get-content /usr/linuxStatus.txt))
+        {
+            "<li>$stat</li>";
+        })
+        </ul>
+    </body>
+</html>
